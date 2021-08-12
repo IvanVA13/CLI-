@@ -70,16 +70,16 @@ function addContact(name, email, phone) {
     } else {
       const contacts = JSON.parse(data.toString());
 
-      const idAddingContact =
+      const idContact =
         contacts.reduce((prev, cur) => (prev.id > cur.id ? prev.id : cur.id)) +
         1;
-      const addingContact = {
-        id: idAddingContact,
+      const newContact = {
+        id: idContact,
         name,
         email,
         phone,
       };
-      const newArrContacts = [...contacts, addingContact];
+      const newArrContacts = [...contacts, newContact];
       fs.writeFile(contactsPath, `${JSON.stringify(newArrContacts)}`, err => {
         if (err) {
           console.log(err.message);
