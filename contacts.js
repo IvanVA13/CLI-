@@ -41,10 +41,8 @@ function removeContact(contactId) {
       return;
     } else {
       const contacts = JSON.parse(data.toString());
-      const deletingContact = contacts.find(
-        contact => contact.id === +contactId,
-      );
-      if (deletingContact) {
+      const deleteContact = contacts.find(contact => contact.id === +contactId);
+      if (deleteContact) {
         fs.writeFile(
           contactsPath,
           `${JSON.stringify(
